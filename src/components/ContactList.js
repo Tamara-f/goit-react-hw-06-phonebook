@@ -3,19 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import ContactListItem from './ContactListItem';
-import { removeContact } from '../redux/phohebookActions';
 
-const ContactList = ({ contacts, onRemoveContact }) => {
+const ContactList = ({ contacts }) => {
   if (contacts.length > 0) {
     return (
       <ul>
-        {contacts.map(({ id, name, number }) => (
-          <ContactListItem
-            key={id}
-            name={name}
-            number={number}
-            onRemove={() => onRemoveContact(id)}
-          />
+        {contacts.map(({ id }) => (
+          <ContactListItem key={id} id={id} />
         ))}
       </ul>
     );
@@ -23,14 +17,7 @@ const ContactList = ({ contacts, onRemoveContact }) => {
 };
 
 ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  onRemoveContact: PropTypes.func.isRequired,
+  contacts: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = ({ contacts }) => {
@@ -44,8 +31,4 @@ const mapStateToProps = ({ contacts }) => {
   };
 };
 
-const mapDispatchToProps = {
-  onRemoveContact: removeContact,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
+export default connect(mapStateToProps)(ContactList);
