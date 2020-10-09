@@ -35,6 +35,7 @@ ContactList.propTypes = {
 
 const mapStateToProps = ({ contacts }) => {
   const { items, filter } = contacts;
+
   const visibleContacts = items.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase()),
   );

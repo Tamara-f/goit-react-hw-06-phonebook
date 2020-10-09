@@ -10,11 +10,6 @@ export default function App() {
     <Section>
       <ContactEditor />
       <h2>Contacts</h2>
-
-      {/* {filterContacts.length > 0 && (
-          <Filter value={filter} onChangeFilter={this.changeFilter} />
-        )} */}
-
       <Filter />
       <ContactList />
     </Section>
