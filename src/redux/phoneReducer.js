@@ -3,7 +3,15 @@ import { createReducer } from '@reduxjs/toolkit';
 
 import { addContact, removeContact, changeFilter } from './phohebookActions';
 
-const onAddContact = (state, action) => [...state, action.payload.contact];
+const onAddContact = (state, action) => {
+  const newContact = action.payload.contact;
+  const UnicName = state.find(contact => contact.name === newContact.name);
+  if (UnicName) {
+    alert(`${newContact.name} is already in contacts!!!`);
+  } else {
+    return [...state, newContact];
+  }
+};
 
 const onRemoveContact = (state, action) =>
   state.filter(contact => contact.id !== action.payload);
