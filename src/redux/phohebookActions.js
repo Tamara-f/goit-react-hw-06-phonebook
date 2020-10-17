@@ -5,8 +5,8 @@ export const addContact = createAction('phonebook/add', ({ name, number }) => ({
   payload: {
     contact: {
       id: uuidv4(),
-      name: name,
-      number: number,
+      name,
+      number,
     },
   },
 }));

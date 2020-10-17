@@ -5,8 +5,8 @@ import { addContact, removeContact, changeFilter } from './phohebookActions';
 
 const onAddContact = (state, action) => {
   const newContact = action.payload.contact;
-  const UnicName = state.find(contact => contact.name === newContact.name);
-  if (UnicName) {
+  const NotUnicName = state.find(contact => contact.name === newContact.name);
+  if (NotUnicName) {
     alert(`${newContact.name} is already in contacts!!!`);
   } else {
     return [...state, newContact];
